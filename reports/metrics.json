@@ -1,0 +1,165 @@
+{
+  "data_source": "synthetic",
+  "data_stats": {
+    "raw_rows": 133200,
+    "after_status_filter": 127851,
+    "after_disbursement_filter": 127851,
+    "after_censoring_filter": 105916,
+    "late_chargeoffs_labelled_0": 3262,
+    "default_rate": 0.07517277842818837
+  },
+  "econ": {
+    "lgd": 0.45,
+    "ead_factor": 0.7033176568314493,
+    "net_margin": 0.015,
+    "avg_balance_factor": 0.85,
+    "horizon_years": 3.0,
+    "revenue_rate": 0.03825,
+    "breakeven_pd": 0.12085577430678712
+  },
+  "cutoff": 0.0946,
+  "cv_auc": {
+    "logistic": 0.6843999584706004,
+    "lightgbm": 0.6811196643950275
+  },
+  "best_params": {
+    "logistic": {
+      "clf__C": 0.03
+    },
+    "lightgbm": {
+      "clf__colsample_bytree": 0.5453032172664104,
+      "clf__learning_rate": 0.04153230257664388,
+      "clf__min_child_samples": 84,
+      "clf__n_estimators": 393,
+      "clf__num_leaves": 10,
+      "clf__reg_lambda": 13.49511716041899,
+      "clf__subsample": 0.8721230154351118
+    }
+  },
+  "calibration_method": "platt",
+  "calibration_cv_brier": {
+    "platt": 0.059523662172031394,
+    "isotonic": 0.05971927200872676
+  },
+  "splits": {
+    "train": {
+      "years": [
+        2010,
+        2016
+      ],
+      "n": 53504,
+      "default_rate": 0.07358328349282296
+    },
+    "valid": {
+      "years": [
+        2017,
+        2018
+      ],
+      "n": 19481,
+      "default_rate": 0.06585904214362713
+    },
+    "test": {
+      "years": [
+        2019,
+        2021
+      ],
+      "n": 29790,
+      "default_rate": 0.08365223229271568
+    }
+  },
+  "valid": {
+    "logistic": {
+      "n": 19481,
+      "default_rate": 0.06585904214362713,
+      "mean_pd": 0.05235393437637405,
+      "auc": 0.6769013613737243,
+      "gini": 0.3538027227474485,
+      "ks": 0.2715358389490096,
+      "brier": 0.05975337789144075,
+      "log_loss": 0.231374483053008
+    },
+    "lightgbm_raw": {
+      "n": 19481,
+      "default_rate": 0.06585904214362713,
+      "mean_pd": 0.07198965597370596,
+      "auc": 0.6788520181185277,
+      "gini": 0.3577040362370554,
+      "ks": 0.2672048104778329,
+      "brier": 0.059545051477527575,
+      "log_loss": 0.2294509397050892
+    },
+    "lightgbm_calibrated": {
+      "n": 19481,
+      "default_rate": 0.06585904214362713,
+      "mean_pd": 0.06585764061622541,
+      "auc": 0.6788520181185277,
+      "gini": 0.3577040362370554,
+      "ks": 0.2672048104778329,
+      "brier": 0.05947830650072751,
+      "log_loss": 0.22911679410679128
+    }
+  },
+  "test": {
+    "logistic": {
+      "n": 29790,
+      "default_rate": 0.08365223229271568,
+      "mean_pd": 0.06031368717821676,
+      "auc": 0.6843330998560916,
+      "gini": 0.3686661997121832,
+      "ks": 0.26738634184008214,
+      "brier": 0.07429158772087056,
+      "log_loss": 0.27486043989860914
+    },
+    "lightgbm_raw": {
+      "n": 29790,
+      "default_rate": 0.08365223229271568,
+      "mean_pd": 0.07099253353498444,
+      "auc": 0.6886542320435284,
+      "gini": 0.37730846408705676,
+      "ks": 0.2735476067191112,
+      "brier": 0.07365103523742692,
+      "log_loss": 0.2706218379066857
+    },
+    "lightgbm_calibrated": {
+      "n": 29790,
+      "default_rate": 0.08365223229271568,
+      "mean_pd": 0.0649775368166781,
+      "auc": 0.6886542320435284,
+      "gini": 0.37730846408705676,
+      "ks": 0.2735476067191112,
+      "brier": 0.07394596738794584,
+      "log_loss": 0.2721806672701651
+    },
+    "auc_ci95_lightgbm": [
+      0.6769169293812418,
+      0.7016349173662623
+    ],
+    "ece_raw": 0.012659698757731225,
+    "ece_calibrated": 0.01867469547603757,
+    "calibration_slope_intercept": [
+      1.0377950484662977,
+      0.3774968655707297
+    ],
+    "psi_score_train_vs_test": 0.0053902675407592054,
+    "by_vintage": [
+      {
+        "approval_year": 2019,
+        "n": 9963,
+        "observed": 0.07397370269998996,
+        "predicted": 0.06737540557373317
+      },
+      {
+        "approval_year": 2020,
+        "n": 8188,
+        "observed": 0.10210063507572056,
+        "predicted": 0.06356341130810697
+      },
+      {
+        "approval_year": 2021,
+        "n": 11639,
+        "observed": 0.07895867342555202,
+        "predicted": 0.06391979072488677
+      }
+    ]
+  }
+}

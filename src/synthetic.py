@@ -125,11 +125,14 @@ def generate(n_per_year: int = 9000, seed: int = config.RANDOM_STATE, target_rat
             - 0.20 * (df["NonProfit"] == "Y").to_numpy()
             - 0.05 * np.log1p(df["JobsSupported"].to_numpy())
             # interactions the linear model can't capture: start-up restaurants & short-term small loans
-            + 0.45 * (df["BusinessAge"] == BUSINESS_AGE[2]).to_numpy() * sector.eq("72").to_numpy()
+            + 0.70 * (df["BusinessAge"] == BUSINESS_AGE[2]).to_numpy() * sector.eq("72").to_numpy()
             + 0.35 * ((term <= 84) & (gross < 100_000)).astype(float)
             - 0.30 * ((startup < 0) & (gross > 500_000)).astype(float)
             + VINTAGE_SHIFT[year]
-            + rng.normal(0, 0.55, n)                             # unobserved heterogeneity
+            + 0.30 * ((term >= 120) & (term <= 180) & ~is504).astype(float)      # mid-term non-RE loans: weakest bucket (non-monotone)
+            + 0.30 * ((gross < 30_000) | (gross > 2_000_000)).astype(float) * (startup > 0)  # tails x young firms
+            + 0.35 * (df["CollateralInd"] == "N").to_numpy() * (df["ProcessingMethod"] == "Express").to_numpy()
+            + rng.normal(0, 0.40, n)                             # unobserved heterogeneity
         )
         # lender pricing sees only part of the risk => interest rate carries signal, not the answer
         prime = config.PRIME_RATE[year]
