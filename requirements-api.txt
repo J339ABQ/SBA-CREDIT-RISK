@@ -1,0 +1,10 @@
+# Runtime dependencies of the scoring API (used by the Dockerfile)
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+lightgbm==4.7.0
+scipy==1.17.1
+joblib==1.6.0
+pydantic==2.13.5
+fastapi==0.141.1
+uvicorn==0.54.0

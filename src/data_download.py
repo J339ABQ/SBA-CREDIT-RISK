@@ -9,7 +9,7 @@ the script prints the manual steps and exits with status 2. Manual fallback:
   1. Open https://data.sba.gov/dataset/7-a-504-foia in a browser.
   2. Download every CSV resource whose name contains '7a' or '504' (FY1991-FY2009, FY2010-FY2019, FY2020-present ...).
   3. Put them, unmodified, in data/raw/real/  (keep '504' in the file name for the 504 files).
-  4. Run `python scripts/run_all.py` - real files in data/raw/real/ take precedence over synthetic data.
+  4. Run `make train` (or `python -m src.train`) - real files in data/raw/real/ take precedence over synthetic data.
 NOTE: file names/columns change between SBA refreshes; src/data_prep.py harmonises the known variants
 and fills missing optional columns with NaN.
 """

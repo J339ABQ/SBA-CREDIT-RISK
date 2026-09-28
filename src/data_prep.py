@@ -107,6 +107,9 @@ def build_target(df: pd.DataFrame, obs_months: int = config.OBS_MONTHS,
     the window), and right-censored recent loans.
     """
     as_of = pd.Timestamp(as_of)
+    df = df.copy()
+    for c in DATE_COLS:  # tolerate unparsed / all-missing date columns
+        df[c] = pd.to_datetime(df[c], errors="coerce")
     n0 = len(df)
     stats = {"raw_rows": n0}
     df = df[df["LoanStatus"].isin(["PIF", "CHGOFF", "EXEMPT"])].copy()

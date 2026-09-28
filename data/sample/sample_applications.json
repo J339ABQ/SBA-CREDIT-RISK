@@ -1,0 +1,4 @@
+{
+  "safe_established_clinic": {"program": "7A", "gross_approval": 600000, "sba_guaranteed_approval": 450000, "term_months": 300, "initial_interest_rate": 7.0, "fixed_or_variable": "V", "processing_method": "PLP", "naics_code": "621111", "borrower_state": "CA", "business_type": "CORPORATION", "business_age": "Existing or more than 2 years old", "collateral_ind": "Y", "is_franchise": false, "non_profit": false, "jobs_supported": 12, "approval_date": "2019-03-01"},
+  "risky_startup_restaurant": {"program": "7A", "gross_approval": 20000, "sba_guaranteed_approval": 17000, "term_months": 60, "initial_interest_rate": 12.5, "fixed_or_variable": "V", "processing_method": "Express", "naics_code": "722511", "borrower_state": "TX", "business_type": "INDIVIDUAL", "business_age": "Startup, Loan Funds will Open Business", "collateral_ind": "N", "is_franchise": false, "non_profit": false, "jobs_supported": 2, "approval_date": "2019-03-01"}
+}

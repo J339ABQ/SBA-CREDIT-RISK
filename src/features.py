@@ -59,12 +59,18 @@ def _prime_for(year: pd.Series) -> pd.Series:
     return year.clip(lo, hi).map(config.PRIME_RATE).astype(float)
 
 
-def _cat(s: pd.Series, upper: bool = True) -> pd.Series:
-    s = s.astype("object")
-    s = s.map(lambda v: str(v).strip() if pd.notna(v) and str(v).strip() != "" else np.nan)
-    s = s.str.upper() if upper else s
+def _clean(v, upper: bool):
+    if v is None or (not isinstance(v, str) and pd.isna(v)) or str(v).strip() == "":
+        return np.nan
+    v = str(v).strip()
+    v = v.upper() if upper else v
     # LightGBM forbids JSON-special chars (commas, quotes...) in feature names -> normalise values
-    return s.map(lambda v: re.sub(r"[^0-9A-Za-z]+", "_", v).strip("_") if isinstance(v, str) else v)
+    return re.sub(r"[^0-9A-Za-z]+", "_", v).strip("_")
+
+
+def _cat(s: pd.Series, upper: bool = True) -> pd.Series:
+    """Text column -> object dtype with NaN for blanks; safe even when the whole column is missing."""
+    return pd.Series([_clean(v, upper) for v in s], index=s.index, dtype="object")
 
 
 def make_features(raw: pd.DataFrame) -> pd.DataFrame:

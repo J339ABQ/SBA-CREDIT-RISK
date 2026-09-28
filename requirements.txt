@@ -1,0 +1,13 @@
+# Full environment: data prep, training, notebooks, tests. Tested on Python 3.11.
+-r requirements-api.txt
+shap==0.51.0
+matplotlib==3.11.2
+seaborn==0.13.2
+httpx==0.28.1
+pytest==9.1.1
+nbformat==5.11.1
+nbclient==0.11.0
+nbconvert==7.17.1
+ipykernel==7.3.0
+pyarrow==25.0.1
+requests==2.33.1

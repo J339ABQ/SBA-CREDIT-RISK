@@ -1,0 +1,9 @@
+data/
+notebooks/
+reports/
+tests/
+scripts/
+docs/
+.git/
+__pycache__/
+*.ipynb
