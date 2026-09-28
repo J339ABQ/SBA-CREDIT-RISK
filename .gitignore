@@ -1,1 +1,11 @@
-data/
+# raw / large data never committed (see docs/DATA_DICTIONARY.md and README for how to obtain)
+data/raw/
+data/processed/
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+*.egg-info/
+.DS_Store
